@@ -12,4 +12,10 @@ def call(String stageName){
      {
        sh "mvn clean deploy"
      }
+   else if ("${stageName}" == "Input")
+     {
+       timeout(time: 5, units: "MINUTES"){
+       input 'project ready for approval'
+       }
+     }
 }
